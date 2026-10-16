@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NovaChain — Ingeniería de suministro minero</title>
+<meta name="description" content="NovaChain: revestimiento cerámico, GETs y chancado. Repuestos y soporte técnico para la minería chilena.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#08222c; --bg2:#0b2b37; --panel:#0e3240;
+  --fg:#e3f0f3; --mute:#87a9b3; --dim:#5a7e89; --line:rgba(160,215,230,.16); --grid:rgba(160,215,230,.07);
+  --or:#FA6312; --teal:#2bb3cf;
+  --gut:clamp(18px,4.5vw,64px);
+  --mono:"IBM Plex Mono",ui-monospace,monospace;
+  --ease:cubic-bezier(.2,.7,.1,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:110px}
+body{background:var(--bg);color:var(--fg);font:400 17px/1.65 "Space Grotesk",system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden;padding-top:40px;
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:32px 32px}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+button,input,select,textarea{font:inherit;color:inherit}
+h1,h2,h3{font-weight:500;letter-spacing:-.035em;line-height:1.02;text-wrap:balance}
+.wrap{max-width:1320px;margin:0 auto;padding:0 var(--gut)}
+.mono{font:400 12px/1.4 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
+.mono b{color:var(--or);font-weight:500}
+.btn{display:inline-flex;align-items:center;gap:12px;padding:16px 24px;font:500 13px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;background:var(--or);color:#08222c;border:0;cursor:pointer;transition:background .25s,color .25s}
+.btn:hover{background:#fff}
+.btn.o{background:none;color:var(--fg);box-shadow:inset 0 0 0 1px var(--line)}
+.btn.o:hover{box-shadow:inset 0 0 0 1px var(--teal);color:var(--teal)}
+.corner{position:relative}
+.corner::before,.corner::after{content:"";position:absolute;width:14px;height:14px;border:1px solid var(--or);pointer-events:none}
+.corner::before{top:-1px;left:-1px;border-right:0;border-bottom:0}
+.corner::after{bottom:-1px;right:-1px;border-left:0;border-top:0}
+
+/* nav */
+.nav{position:fixed;top:40px;left:0;right:0;z-index:60;background:rgba(8,34,44,.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:70px;gap:20px}
+.nav .logo{display:flex;align-items:center;gap:16px}
+.nav .logo img{height:28px;width:auto}
+.nav .logo .mono{border-left:1px solid var(--line);padding-left:16px;font-size:11px}
+.nav ul{display:flex;list-style:none;font:400 13px var(--mono);letter-spacing:.06em;text-transform:uppercase}
+.nav ul a{padding:8px 14px;color:var(--mute);transition:color .2s}
+.nav ul a:hover{color:var(--fg)}
+.nav ul a span{color:var(--or);margin-right:6px}
+.nav .btn{padding:12px 18px}
+.nc-burger{display:none;width:44px;height:44px;background:none;border:1px solid var(--line);cursor:pointer;position:relative}
+.nc-burger i,.nc-burger i::before,.nc-burger i::after{position:absolute;left:12px;width:18px;height:1.5px;background:var(--fg);content:"";transition:.3s}
+.nc-burger i{top:21px}.nc-burger i::before{left:0;top:-6px}.nc-burger i::after{left:0;top:6px}
+.nc-menu{position:fixed;inset:40px 0 0;z-index:55;background:var(--bg);display:flex;flex-direction:column;justify-content:center;padding:100px var(--gut);gap:10px;opacity:0;pointer-events:none;transition:opacity .3s}
+.nc-menu a{font:500 38px/1.2 "Space Grotesk";letter-spacing:-.03em}
+.nc-menu a span{font:400 13px var(--mono);color:var(--or);margin-right:14px;vertical-align:middle}
+body.nc-open .nc-menu{opacity:1;pointer-events:auto}
+body.nc-open .nc-burger i{background:transparent}
+body.nc-open .nc-burger i::before{top:0;transform:rotate(45deg)}
+body.nc-open .nc-burger i::after{top:0;transform:rotate(-45deg)}
+@media(max-width:1060px){.nav ul,.nav .btn,.nav .logo .mono{display:none}.nc-burger{display:block}}
+
+/* hero */
+.hero{padding:160px 0 70px}
+.hero .g{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,5vw,70px);align-items:center}
+.hero h1{font-size:clamp(46px,6vw,92px);margin:24px 0 24px}
+.hero h1 em{font-style:normal;color:var(--or)}
+.hero p{color:var(--mute);font-size:clamp(17px,1.4vw,20px);max-width:520px}
+.hero .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:34px}
+.fig{border:1px solid var(--line);background:rgba(14,50,64,.55);padding:18px 18px 22px}
+.fig .hd{display:flex;justify-content:space-between;gap:10px;padding-bottom:12px;border-bottom:1px dashed var(--line);margin-bottom:12px}
+.fig .art{color:#bfe3ec;--ill-accent:var(--or)}
+.fig .art svg{width:100%;height:auto}
+.fig .art text{font-family:var(--mono)}
+.fig .ft{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;border-top:1px dashed var(--line);padding-top:12px;margin-top:6px}
+.ill-rocks{animation:fall 2.4s ease-in infinite}
+@keyframes fall{0%{transform:translateY(-10px);opacity:0}25%{opacity:.85}100%{transform:translateY(28px);opacity:0}}
+
+/* specs strip */
+.specs{border-block:1px solid var(--line);background:rgba(11,43,55,.7)}
+.specs .wrap{display:grid;grid-template-columns:repeat(4,1fr)}
+.specs div{padding:28px 24px;border-right:1px solid var(--line)}
+.specs div:first-child{padding-left:0}
+.specs div:last-child{border-right:0}
+.specs b{display:block;font:500 clamp(34px,3.6vw,52px)/1 "Space Grotesk";letter-spacing:-.04em;margin-top:8px}
+.specs b sup{font-size:.45em;color:var(--or);vertical-align:top}
+
+section{padding:clamp(90px,11vw,150px) 0}
+.sh{display:grid;grid-template-columns:260px 1fr;gap:30px;margin-bottom:clamp(44px,5vw,70px)}
+.sh h2{font-size:clamp(40px,5vw,74px)}
+.sh h2 em{font-style:normal;color:var(--or)}
+.sh p{color:var(--mute);margin-top:20px;max-width:620px}
+
+/* fichas */
+.sheets{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.sheet{border:1px solid var(--line);background:var(--bg2);display:flex;flex-direction:column;transition:border-color .3s,transform .4s var(--ease)}
+.sheet:hover{border-color:rgba(250,99,18,.6);transform:translateY(-4px)}
+.sheet .top{display:flex;justify-content:space-between;padding:14px 18px;border-bottom:1px solid var(--line)}
+.sheet .art{padding:16px 18px;color:#bfe3ec;--ill-accent:var(--or);border-bottom:1px solid var(--line);background:linear-gradient(var(--grid) 1px,transparent 1px) 0 0/16px 16px,linear-gradient(90deg,var(--grid) 1px,transparent 1px) 0 0/16px 16px}
+.sheet .art svg{width:100%;height:auto}
+.sheet .art text{font-family:var(--mono);font-size:10px}
+.sheet .b{padding:22px 18px 24px;flex:1;display:flex;flex-direction:column}
+.sheet h3{font-size:30px;margin-bottom:12px}
+.sheet p{color:var(--mute);font-size:15.5px;margin-bottom:18px}
+.sheet table{width:100%;border-collapse:collapse;font:400 13px/1.45 var(--mono);margin-top:auto}
+.sheet th,.sheet td{text-align:left;padding:9px 0;border-top:1px dashed var(--line);vertical-align:top}
+.sheet th{color:var(--dim);font-weight:400;text-transform:uppercase;letter-spacing:.06em;width:38%;padding-right:10px}
+.sheet .new{background:var(--or);color:#08222c;padding:2px 7px;font:500 11px var(--mono);letter-spacing:.08em}
+.sheet a.q{margin-top:18px;font:500 13px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--or)}
+.sheet a.q:hover{color:#fff}
+
+/* proceso / por qué */
+#por-que{background:rgba(11,43,55,.6);border-block:1px solid var(--line)}
+.why{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);border-left:1px solid var(--line)}
+.why div{padding:30px 26px 34px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);transition:background .3s}
+.why div:hover{background:rgba(250,99,18,.05)}
+.why h3{font-size:24px;margin:18px 0 10px;display:flex;justify-content:space-between;gap:10px}
+.why h3::after{content:"→";color:var(--or);transform:translateX(-6px);opacity:0;transition:.3s}
+.why div:hover h3::after{opacity:1;transform:none}
+.why p{color:var(--mute);font-size:15.5px}
+
+/* nosotros */
+.about{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,90px);align-items:start}
+.about .ph{position:relative;aspect-ratio:4/3;overflow:hidden;border:1px solid var(--line)}
+.about .ph img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.1) brightness(.75);mix-blend-mode:luminosity}
+.about .ph::after{content:"";position:absolute;inset:0;background:linear-gradient(160deg,rgba(11,122,146,.55),rgba(8,34,44,.4))}
+.about .ph .mono{position:absolute;left:14px;bottom:12px;z-index:2;color:#d5ecf1}
+.about h2{font-size:clamp(36px,4vw,58px);margin:20px 0 22px}
+.about h2 em{font-style:normal;color:var(--or)}
+.about p{color:var(--mute)}
+.log{margin-top:34px;border-top:1px solid var(--line)}
+.log div{display:grid;grid-template-columns:110px 1fr;gap:18px;padding:18px 0;border-bottom:1px solid var(--line)}
+.log h4{font:500 13px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--or);padding-top:3px}
+.log p{color:var(--fg);font-size:16px}
+
+/* clientes */
+.clients{padding:60px 0}
+.clients .wrap{display:flex;gap:40px;align-items:center;justify-content:space-between;flex-wrap:wrap;border:1px dashed var(--line);padding-top:30px;padding-bottom:30px}
+.clients .l{display:flex;gap:60px;align-items:center;flex-wrap:wrap}
+.clients img{height:38px;width:auto;opacity:.7;filter:grayscale(1) brightness(1.4)}
+
+/* contacto: terminal */
+.contact{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(30px,5vw,80px)}
+.contact h2{font-size:clamp(42px,5vw,76px);margin:20px 0 30px}
+.contact h2 em{font-style:normal;color:var(--or)}
+.kv{font:400 15px/1.5 var(--mono)}
+.kv div{display:grid;grid-template-columns:120px 1fr;gap:14px;padding:14px 0;border-top:1px dashed var(--line)}
+.kv dt{color:var(--dim);text-transform:uppercase;font-size:12px;letter-spacing:.08em;padding-top:2px}
+.kv a:hover{color:var(--or)}
+.term{border:1px solid var(--line);background:#061a22}
+.term .tb{display:flex;align-items:center;gap:8px;padding:12px 16px;border-bottom:1px solid var(--line)}
+.term .tb i{width:10px;height:10px;border-radius:50%;background:#1c4553}
+.term .tb i:first-child{background:var(--or)}
+.term .tb span{margin-left:10px}
+form.f{padding:clamp(20px,3vw,32px);display:grid;gap:4px;font-family:var(--mono)}
+form.f label{display:grid;grid-template-columns:150px 1fr;align-items:center;gap:12px;font-size:13px;color:var(--teal);border-bottom:1px dashed var(--line);padding:10px 0}
+form.f label::before{content:attr(data-k);color:var(--teal)}
+form.f label span{display:none}
+form.f input,form.f select,form.f textarea{background:none;border:0;outline:none;font:400 16px var(--mono);color:var(--fg);width:100%;padding:6px 0}
+form.f select option{background:#061a22}
+form.f textarea{min-height:90px;resize:vertical}
+form.f input::placeholder,form.f textarea::placeholder{color:#3d6573}
+form.f label:focus-within{border-color:var(--or)}
+form.f .btn{margin-top:22px;justify-self:start}
+
+footer{border-top:1px solid var(--line);padding:30px 0}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}
+footer img{height:24px}
+
+.rv{opacity:0;transform:translateY(24px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.rv.in{opacity:1;transform:none}
+
+@media(max-width:1060px){
+  .hero .g,.about,.contact{grid-template-columns:1fr}
+  .sheets{grid-template-columns:1fr 1fr}
+  .sheets .sheet:last-child{grid-column:span 2}
+  .why{grid-template-columns:1fr 1fr}
+  .sh{grid-template-columns:1fr;gap:6px}
+  .specs .wrap{grid-template-columns:1fr 1fr}
+  .specs div:nth-child(2){border-right:0}
+  .specs div:nth-child(-n+2){border-bottom:1px solid var(--line)}
+  .specs div:nth-child(3){padding-left:0}
+}
+@media(max-width:640px){
+  body{font-size:16px;background-size:24px 24px}
+  .nav .wrap{height:62px}.nav .logo img{height:24px}
+  .hero{padding:126px 0 50px}
+  .hero .cta{flex-direction:column}
+  .hero .cta .btn{justify-content:center}
+  .fig .ft{grid-template-columns:1fr 1fr}
+  .specs div,.specs div:first-child,.specs div:nth-child(3){padding:20px 14px}
+  .sheets{grid-template-columns:1fr}
+  .sheets .sheet:last-child{grid-column:auto}
+  .why{grid-template-columns:1fr}
+  .log div,.kv div{grid-template-columns:1fr;gap:4px}
+  form.f label{grid-template-columns:1fr;gap:2px}
+  form.f .btn{justify-self:stretch;justify-content:center}
+  .clients .l{gap:30px}.clients img{height:28px}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a href="#" class="logo"><img src="img/logo-blanco.png" alt="NovaChain"><span class="mono">Supply · Mining · Chile</span></a>
+    <ul>
+      <li><a href="#lineas"><span>01</span>Líneas</a></li>
+      <li><a href="#por-que"><span>02</span>Ventajas</a></li>
+      <li><a href="#nosotros"><span>03</span>Nosotros</a></li>
+      <li><a href="#contacto"><span>04</span>Contacto</a></li>
+    </ul>
+    <a href="#contacto" class="btn">Cotizar →</a>
+    <button class="nc-burger" aria-label="Menú"><i></i></button>
+  </div>
+</header>
+<nav class="nc-menu">
+  <a href="#lineas"><span>01</span>Líneas</a><a href="#por-que"><span>02</span>Ventajas</a><a href="#nosotros"><span>03</span>Nosotros</a><a href="#contacto"><span>04</span>Contacto</a>
+</nav>
+
+<section class="hero">
+  <div class="wrap g">
+    <div>
+      <div class="mono rv"><b>●</b> Repuestos para minería — Santiago, Chile</div>
+      <h1 class="rv">Ingeniería de suministro para que <em>la planta no se detenga</em>.</h1>
+      <p class="rv">Revestimiento cerámico, GETs para maquinaria pesada y repuestos de chancado, con soporte técnico y una cadena de suministro eficiente.</p>
+      <div class="cta rv"><a href="#contacto" class="btn">Solicitar cotización →</a><a href="#lineas" class="btn o">Ver fichas técnicas</a></div>
+    </div>
+    <figure class="fig corner rv">
+      <div class="hd"><span class="mono"><b>FIG. 03</b> — Chancador cónico</span><span class="mono">Línea nueva</span></div>
+      <div class="art" data-ill="chancado"></div>
+      <div class="ft">
+        <span class="mono">Etapa<br><b style="color:var(--fg)">1ª · 2ª · 3ª</b></span>
+        <span class="mono">Componentes<br><b style="color:var(--fg)">Manto · Cóncavo</b></span>
+        <span class="mono">Soporte<br><b style="color:var(--fg)">Técnico</b></span>
+      </div>
+    </figure>
+  </div>
+</section>
+
+<div class="specs">
+  <div class="wrap">
+    <div class="rv"><span class="mono">Experiencia</span><b>20<sup>+</sup></b></div>
+    <div class="rv"><span class="mono">Líneas de negocio</span><b>03</b></div>
+    <div class="rv"><span class="mono">Industrias</span><b>Minería</b></div>
+    <div class="rv"><span class="mono">Cobertura</span><b>Nacional</b></div>
+  </div>
+</div>
+
+<section id="lineas">
+  <div class="wrap">
+    <div class="sh">
+      <div class="mono rv"><b>01</b> / Líneas de negocio</div>
+      <div><h2 class="rv">Fichas técnicas de <em>nuestras líneas</em></h2><p class="rv">Un portafolio alineado con las necesidades operacionales de cada faena, con productos propios y de marca original.</p></div>
+    </div>
+    <div class="sheets">
+      <article class="sheet rv">
+        <div class="top"><span class="mono"><b>NC-L01</b></span><span class="mono">Protección al desgaste</span></div>
+        <div class="art" data-ill="ceramico"></div>
+        <div class="b">
+          <h3>Revestimiento cerámico</h3>
+          <p>Protección frente a la abrasión y el impacto para extender la vida útil de los equipos.</p>
+          <table>
+            <tr><th>Aplicación</th><td>Chutes, tolvas, ciclones, cañerías</td></tr>
+            <tr><th>Productos</th><td>Placas de alúmina, cerámico-caucho, compuestos de reparación</td></tr>
+          </table>
+          <a href="#contacto" class="q">→ Cotizar NC-L01</a>
+        </div>
+      </article>
+      <article class="sheet rv">
+        <div class="top"><span class="mono"><b>NC-L02</b></span><span class="mono">Carguío</span></div>
+        <div class="art" data-ill="gets"></div>
+        <div class="b">
+          <h3>GETs para maquinaria pesada</h3>
+          <p>Elementos de desgaste que protegen los baldes y mantienen la productividad del carguío.</p>
+          <table>
+            <tr><th>Equipos</th><td>Palas, cargadores, excavadoras, bulldozers</td></tr>
+            <tr><th>Productos</th><td>Dientes, adaptadores, cuchillas, cantoneras, pasadores</td></tr>
+          </table>
+          <a href="#contacto" class="q">→ Cotizar NC-L02</a>
+        </div>
+      </article>
+      <article class="sheet rv">
+        <div class="top"><span class="mono"><b>NC-L03</b></span><span class="new">Nueva</span></div>
+        <div class="art" data-ill="chancado"></div>
+        <div class="b">
+          <h3>Chancado</h3>
+          <p>Repuestos y piezas de desgaste para mantener la reducción de material sin detenciones.</p>
+          <table>
+            <tr><th>Etapas</th><td>Chancado primario, secundario y terciario</td></tr>
+            <tr><th>Productos</th><td>Mantos, cóncavos, placas de mandíbula, componentes</td></tr>
+          </table>
+          <a href="#contacto" class="q">→ Cotizar NC-L03</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="por-que">
+  <div class="wrap">
+    <div class="sh">
+      <div class="mono rv"><b>02</b> / Ventajas</div>
+      <div><h2 class="rv">¿Por qué confiar en <em>NovaChain</em>?</h2></div>
+    </div>
+    <div class="why">
+      <div class="rv"><span class="mono"><b>V-01</b></span><h3>Lead time</h3><p>Partners logísticos confiables nos garantizan entregas rápidas y continuidad operativa.</p></div>
+      <div class="rv"><span class="mono"><b>V-02</b></span><h3>Precios competitivos</h3><p>La mejor relación precio-calidad con productos propios y de marca original.</p></div>
+      <div class="rv"><span class="mono"><b>V-03</b></span><h3>Calidad garantizada</h3><p>Productos de calidad para asegurar la sustentabilidad de tus activos.</p></div>
+      <div class="rv"><span class="mono"><b>V-04</b></span><h3>Portafolio de productos</h3><p>Repuestos especializados para minería, con soluciones para cada operación.</p></div>
+      <div class="rv"><span class="mono"><b>V-05</b></span><h3>Equipo técnico</h3><p>Una amplia gama de productos en 3 líneas de negocio, con soporte experto.</p></div>
+      <div class="rv"><span class="mono"><b>V-06</b></span><h3>Servicio confiable</h3><p>Calidad y tiempos eficientes para apoyar las metas de nuestros clientes.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="nosotros">
+  <div class="wrap about">
+    <div class="ph corner rv"><img src="img/camion-mina.jpg" alt="Camión minero en faena" loading="lazy"><span class="mono">Registro de campo — Gran minería</span></div>
+    <div>
+      <div class="mono rv"><b>03</b> / Nosotros</div>
+      <h2 class="rv">Más de 20 años <em>en terreno</em></h2>
+      <p class="rv">Optimizamos la gestión y el valor de activos mediante innovación y desarrollo sustentable. Nuestro equipo ejecutivo y técnico acompaña a cada cliente en los ámbitos técnicos y del negocio, con soluciones integrales a cada requerimiento.</p>
+      <div class="log rv">
+        <div><h4>Misión</h4><p>Soluciones confiables y de calidad para maximizar la productividad, con soporte técnico e innovación.</p></div>
+        <div><h4>Visión</h4><p>Ser líderes del mercado por innovación, excelencia en servicio y soluciones que superen expectativas.</p></div>
+        <div><h4>Valores</h4><p>Calidad, confianza y atención personalizada, centrada en el cliente.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="clients" id="clientes">
+  <div class="wrap">
+    <span class="mono"><b>●</b> Nuestros clientes</span>
+    <div class="l">
+      <img src="img/cliente-herco.png" alt="Herco Equipment" loading="lazy">
+      <img src="img/cliente-yichuan.png" alt="Yichuan International" loading="lazy">
+      <img src="img/cliente-rkt.webp" alt="RKT" loading="lazy">
+    </div>
+  </div>
+</div>
+
+<section id="contacto">
+  <div class="wrap contact">
+    <div>
+      <div class="mono rv"><b>04</b> / Contacto</div>
+      <h2 class="rv">Envíanos tu <em>requerimiento</em></h2>
+      <dl class="kv rv">
+        <div><dt>Oficina</dt><dd>Tajamar 481, Torre Norte, Of. 303, Las Condes</dd></div>
+        <div><dt>Correo</dt><dd><a href="mailto:contacto@novachain.com">contacto@novachain.com</a></dd></div>
+        <div><dt>Teléfono</dt><dd><a href="tel:+56987290154">+56 9 8729 0154</a></dd></div>
+        <div><dt>Horario</dt><dd>Lun – Vie · 09:00 – 18:00</dd></div>
+      </dl>
+    </div>
+    <div class="term rv">
+      <div class="tb"><i></i><i></i><i></i><span class="mono">solicitud_cotizacion.txt</span></div>
+      <form class="f" data-contact>
+        <label data-k="nombre:"><span>Nombre</span><input name="nombre" required placeholder="Tu nombre"></label>
+        <label data-k="empresa:"><span>Empresa</span><input name="empresa" placeholder="Empresa / faena"></label>
+        <label data-k="correo:"><span>Correo</span><input name="correo" type="email" required placeholder="nombre@empresa.cl"></label>
+        <label data-k="línea:"><span>Línea</span><select name="linea"><option>Revestimiento cerámico</option><option>GETs para maquinaria pesada</option><option>Chancado</option><option>Otro</option></select></label>
+        <label data-k="detalle:"><span>Mensaje</span><textarea name="mensaje" placeholder="Equipo, número de parte, cantidad…"></textarea></label>
+        <button class="btn" type="submit">Enviar solicitud ↵</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <img src="img/logo-blanco.png" alt="NovaChain">
+    <span class="mono">© 2026 NovaChain — Soporte técnico y logístico a nivel nacional</span>
+  </div>
+</footer>
+
+<script src="shared.js"></script>
+</body>
+</html>

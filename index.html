@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NovaChain — Repuestos para minería</title>
+<meta name="description" content="NovaChain: repuestos para minería, revestimiento cerámico, GETs para maquinaria pesada y chancado. Más de 20 años de experiencia en Chile.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Barlow:wght@400;500;600&family=Inter:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0d0e10; --bg2:#141619; --bg3:#1b1e22;
+  --fg:#ecebe8; --mute:#8e9197; --line:rgba(255,255,255,.1);
+  --or:#FA6312; --or2:#ff8a47; --teal:#0B7A92;
+  --gut:clamp(18px,4.5vw,64px);
+  --cond:"Barlow Condensed",Impact,sans-serif;
+  --ease:cubic-bezier(.2,.7,.1,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:110px}
+body{background:var(--bg);color:var(--fg);font:400 17px/1.65 Barlow,system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden;padding-top:40px}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+button,input,select,textarea{font:inherit;color:inherit}
+h1,h2,h3{font-family:var(--cond);font-weight:800;text-transform:uppercase;line-height:.9;letter-spacing:-.005em}
+.wrap{max-width:1360px;margin:0 auto;padding:0 var(--gut)}
+.tag{display:inline-flex;align-items:center;gap:10px;font:600 13px/1 var(--cond);letter-spacing:.24em;text-transform:uppercase;color:var(--or)}
+.tag::before{content:"";width:10px;height:10px;background:var(--or);clip-path:polygon(0 0,100% 50%,0 100%)}
+.btn{display:inline-flex;align-items:center;gap:12px;padding:18px 30px;font:700 15px/1 var(--cond);letter-spacing:.16em;text-transform:uppercase;background:var(--or);color:#0d0e10;clip-path:polygon(0 0,100% 0,100% 70%,calc(100% - 14px) 100%,0 100%);transition:background .25s,transform .25s;border:0;cursor:pointer}
+.btn:hover{background:#fff;transform:translateY(-2px)}
+.btn.ghost{background:transparent;color:#fff;box-shadow:inset 0 0 0 1px rgba(255,255,255,.4);clip-path:none}
+.btn.ghost:hover{background:#fff;color:#0d0e10}
+.hazard{height:10px;background:repeating-linear-gradient(-45deg,var(--or) 0 14px,#0d0e10 14px 28px)}
+
+/* nav */
+.nav{position:fixed;top:40px;left:0;right:0;z-index:60;transition:background .35s,border-color .35s;border-bottom:1px solid transparent}
+.nav.solid{background:rgba(13,14,16,.94);backdrop-filter:blur(10px);border-color:var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:82px}
+.nav .logo img{height:34px;width:auto}
+.nav ul{display:flex;gap:34px;list-style:none;font:600 15px/1 var(--cond);letter-spacing:.16em;text-transform:uppercase}
+.nav ul a{color:#cfd0d2;transition:color .2s}
+.nav ul a:hover{color:var(--or)}
+.nav .btn{padding:14px 22px;font-size:14px}
+.nc-burger{display:none;width:46px;height:46px;background:none;border:1px solid var(--line);cursor:pointer;position:relative}
+.nc-burger i,.nc-burger i::before,.nc-burger i::after{position:absolute;left:12px;width:20px;height:2px;background:#fff;content:"";transition:.3s}
+.nc-burger i{top:21px}.nc-burger i::before{left:0;top:-6px}.nc-burger i::after{left:0;top:6px}
+.nc-menu{position:fixed;inset:40px 0 0;z-index:55;background:var(--bg);display:flex;flex-direction:column;justify-content:center;padding:100px var(--gut);gap:4px;opacity:0;pointer-events:none;transition:opacity .3s}
+.nc-menu a{font:800 52px/1.05 var(--cond);text-transform:uppercase}
+.nc-menu a:hover{color:var(--or)}
+body.nc-open .nc-menu{opacity:1;pointer-events:auto}
+body.nc-open .nc-burger i{background:transparent}
+body.nc-open .nc-burger i::before{top:0;transform:rotate(45deg)}
+body.nc-open .nc-burger i::after{top:0;transform:rotate(-45deg)}
+@media(max-width:980px){.nav ul,.nav .btn{display:none}.nc-burger{display:block}}
+
+/* hero */
+.hero{position:relative;min-height:calc(100svh - 40px);display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden}
+.hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% 50%;filter:grayscale(.35) contrast(1.1) brightness(.75);transform:scale(1.06);animation:z 14s ease-out forwards}
+@keyframes z{to{transform:scale(1)}}
+.hero::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(13,14,16,.95) 0%,rgba(13,14,16,.65) 45%,rgba(13,14,16,.15) 100%),linear-gradient(0deg,var(--bg) 0%,transparent 35%)}
+.hero .wrap{position:relative;z-index:2;width:100%;padding-top:150px}
+.hero h1{font-size:clamp(64px,10.5vw,176px);margin:22px 0 26px;max-width:12ch}
+.hero h1 span{color:var(--or)}
+.hero p{font-size:clamp(18px,1.5vw,22px);max-width:500px;color:#c6c7c9}
+.hero .cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:36px}
+.hero-lines{display:grid;grid-template-columns:repeat(3,1fr);margin-top:clamp(60px,9vh,110px);border-top:1px solid var(--line)}
+.hero-lines a{padding:26px 26px 30px 0;display:flex;gap:18px;align-items:baseline;border-right:1px solid var(--line);transition:background .3s}
+.hero-lines a+a{padding-left:26px}
+.hero-lines a:last-child{border-right:0}
+.hero-lines b{font:700 15px var(--cond);color:var(--or);letter-spacing:.1em}
+.hero-lines span{font:700 clamp(22px,2vw,30px)/1 var(--cond);text-transform:uppercase}
+.hero-lines em{font-style:normal;font:600 11px/1 var(--cond);letter-spacing:.2em;background:var(--or);color:#000;padding:4px 6px;margin-left:8px;vertical-align:middle}
+.hero-lines a:hover span{color:var(--or)}
+.hero .years{position:absolute;right:var(--gut);top:170px;z-index:2;text-align:right}
+.hero .years b{display:block;font:800 clamp(80px,9vw,150px)/.8 var(--cond);-webkit-text-stroke:1.5px rgba(255,255,255,.7);color:transparent}
+.hero .years span{font:600 14px var(--cond);letter-spacing:.24em;text-transform:uppercase;color:#c6c7c9}
+
+/* ticker */
+.ticker{background:var(--or);color:#0d0e10;overflow:hidden;white-space:nowrap;padding:16px 0}
+.ticker div{display:inline-flex;gap:38px;animation:mq 34s linear infinite;font:800 26px/1 var(--cond);text-transform:uppercase;letter-spacing:.04em}
+.ticker span::after{content:"✕";margin-left:38px;font-size:.7em;vertical-align:middle}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+section{padding:clamp(90px,11vw,150px) 0}
+.sh{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end;margin-bottom:clamp(50px,6vw,80px)}
+.sh h2{font-size:clamp(52px,7vw,110px);margin-top:18px}
+.sh h2 span{color:var(--or)}
+.sh p{color:var(--mute);max-width:470px;justify-self:end}
+
+/* nosotros */
+.about{display:grid;grid-template-columns:auto 1fr;gap:clamp(40px,7vw,120px);align-items:center}
+.big{font:800 clamp(160px,22vw,340px)/.78 var(--cond);color:var(--or);letter-spacing:-.04em}
+.big small{display:block;font:700 18px/1.2 var(--cond);letter-spacing:.2em;color:var(--fg);margin-top:18px}
+.about h2{font-size:clamp(44px,5.4vw,84px);margin:18px 0 26px}
+.about p{color:#b9babd;max-width:640px;font-size:19px}
+.about .mvv{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);margin-top:44px;border:1px solid var(--line)}
+.about .mvv div{background:var(--bg);padding:24px}
+.about .mvv h3{font-size:24px;color:var(--or);margin-bottom:10px}
+.about .mvv p{font-size:15px;color:var(--mute)}
+
+/* líneas */
+#lineas{background:var(--bg2)}
+.line{display:grid;grid-template-columns:110px 1.1fr 1fr;gap:clamp(24px,4vw,60px);padding:clamp(40px,5vw,64px) 0;border-top:1px solid var(--line);align-items:center}
+.line:last-child{border-bottom:1px solid var(--line)}
+.line .n{font:800 92px/.8 var(--cond);color:transparent;-webkit-text-stroke:1.5px var(--or);align-self:start}
+.line h3{font-size:clamp(44px,5vw,78px)}
+.line h3 em{font-style:normal;display:inline-block;font:700 13px/1 var(--cond);letter-spacing:.2em;background:var(--or);color:#000;padding:6px 9px;vertical-align:top;margin:8px 0 0 12px}
+.line p{color:#b9babd;margin:18px 0 22px;max-width:540px}
+.line ul{list-style:none;display:grid;gap:10px}
+.line li{display:flex;gap:12px;align-items:center;font:600 18px var(--cond);letter-spacing:.06em;text-transform:uppercase}
+.line li::before{content:"";width:22px;height:2px;background:var(--or)}
+.line .art{position:relative;background:var(--bg3);border:1px solid var(--line);aspect-ratio:4/3;display:grid;place-items:center;padding:24px;color:#d9d9d6;--ill-accent:var(--or);overflow:hidden}
+.line .art svg{width:100%;height:auto;position:relative;z-index:2}
+.line .art img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:left center;opacity:.16;filter:grayscale(1)}
+.line .art .cap{position:absolute;left:14px;top:12px;z-index:3;font:600 11px var(--cond);letter-spacing:.2em;color:var(--mute)}
+.line.new .art{border-color:rgba(250,99,18,.5)}
+.ill-rocks{animation:fall 2.6s ease-in infinite}
+@keyframes fall{0%{transform:translateY(-10px);opacity:0}25%{opacity:.8}100%{transform:translateY(26px);opacity:0}}
+
+/* por qué */
+.why{display:grid;grid-template-columns:repeat(3,1fr);border-left:1px solid var(--line);border-top:1px solid var(--line)}
+.why div{padding:40px 34px 44px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);position:relative;transition:background .3s}
+.why div:hover{background:var(--bg2)}
+.why div::before{content:"";position:absolute;left:-1px;top:-1px;width:0;height:3px;background:var(--or);transition:width .5s var(--ease)}
+.why div:hover::before{width:calc(100% + 1px)}
+.why b{font:700 15px var(--cond);color:var(--or);letter-spacing:.12em}
+.why h3{font-size:36px;margin:18px 0 14px}
+.why p{color:var(--mute);font-size:16px}
+
+/* banda equipo */
+.band{position:relative;padding:clamp(120px,16vw,220px) 0;overflow:hidden}
+.band img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(.5) brightness(.45) contrast(1.1)}
+.band .wrap{position:relative;z-index:2}
+.band h2{font-size:clamp(46px,6.6vw,104px);max-width:16ch}
+.band h2 span{color:var(--or)}
+.band p{max-width:620px;margin-top:28px;color:#d0d1d3;font-size:19px}
+
+/* clientes */
+.clients{padding:70px 0;border-bottom:1px solid var(--line)}
+.clients .wrap{display:grid;grid-template-columns:auto 1fr;gap:60px;align-items:center}
+.clients .logos{display:flex;justify-content:space-around;align-items:center;gap:40px;flex-wrap:wrap}
+.clients img{height:46px;width:auto;opacity:.75;transition:opacity .3s;filter:grayscale(1)}
+.clients img:hover{opacity:1}
+
+/* contacto */
+.contact{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(40px,6vw,100px)}
+.contact h2{font-size:clamp(56px,7.4vw,120px);margin:18px 0 30px}
+.contact h2 span{color:var(--or)}
+.info{display:grid;gap:0;border-top:1px solid var(--line)}
+.info div{display:grid;grid-template-columns:150px 1fr;gap:20px;padding:20px 0;border-bottom:1px solid var(--line)}
+.info dt{font:600 13px var(--cond);letter-spacing:.2em;text-transform:uppercase;color:var(--or);padding-top:4px}
+.info dd{font-size:18px}
+.info a:hover{color:var(--or)}
+form.f{background:var(--bg2);border:1px solid var(--line);padding:clamp(26px,4vw,48px);display:grid;grid-template-columns:1fr 1fr;gap:22px}
+form.f h3{grid-column:span 2;font-size:38px}
+form.f label{display:grid;gap:8px;font:600 12px var(--cond);letter-spacing:.2em;text-transform:uppercase;color:var(--mute)}
+form.f .full{grid-column:span 2}
+form.f input,form.f select,form.f textarea{background:var(--bg);border:1px solid var(--line);padding:14px 16px;font:400 16px Barlow;color:var(--fg);outline:none;transition:border-color .2s;border-radius:0}
+form.f input:focus,form.f select:focus,form.f textarea:focus{border-color:var(--or)}
+form.f textarea{min-height:130px;resize:vertical}
+form.f .btn{justify-self:start}
+footer{padding:50px 0 34px;color:var(--mute);font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;align-items:center}
+footer img{height:28px}
+
+.rv{opacity:0;transform:translateY(30px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.rv.in{opacity:1;transform:none}
+
+/* responsive */
+@media(max-width:980px){
+  .hero .years{display:none}
+  .sh{grid-template-columns:1fr}.sh p{justify-self:start}
+  .about{grid-template-columns:1fr}
+  .line{grid-template-columns:1fr;gap:18px}
+  .line .n{font-size:64px}
+  .why{grid-template-columns:1fr 1fr}
+  .contact{grid-template-columns:1fr}
+  .clients .wrap{grid-template-columns:1fr;gap:30px}
+}
+@media(max-width:640px){
+  body{font-size:16px}
+  .nav .wrap{height:68px}.nav .logo img{height:28px}
+  .hero .wrap{padding-top:120px}
+  .hero h1{font-size:clamp(54px,16.5vw,82px)}
+  .hero .cta{flex-direction:column}
+  .hero .cta .btn{justify-content:center;padding:18px 14px}
+  .hero-lines{grid-template-columns:1fr}
+  .hero-lines a,.hero-lines a+a{padding:16px 0;border-right:0;border-bottom:1px solid var(--line)}
+  .ticker div{font-size:20px}
+  section{padding:80px 0}
+  .about .mvv{grid-template-columns:1fr}
+  .why{grid-template-columns:1fr}
+  .why div{padding:30px 22px}
+  form.f{grid-template-columns:1fr}
+  form.f h3,form.f .full{grid-column:auto}
+  form.f .btn{justify-self:stretch;justify-content:center}
+  .info div{grid-template-columns:1fr;gap:4px}
+  .nc-menu a{font-size:44px}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a href="#" class="logo"><img src="img/logo-blanco.png" alt="NovaChain"></a>
+    <ul>
+      <li><a href="#nosotros">Nosotros</a></li>
+      <li><a href="#lineas">Líneas</a></li>
+      <li><a href="#por-que">Por qué</a></li>
+      <li><a href="#clientes">Clientes</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+    <a href="#contacto" class="btn">Cotizar</a>
+    <button class="nc-burger" aria-label="Menú"><i></i></button>
+  </div>
+</header>
+<nav class="nc-menu">
+  <a href="#nosotros">Nosotros</a><a href="#lineas">Líneas</a><a href="#por-que">Por qué</a><a href="#clientes">Clientes</a><a href="#contacto">Contacto</a>
+</nav>
+
+<section class="hero" style="padding:0">
+  <img src="img/camion-mina.jpg" alt="Camión minero en faena">
+  <div class="years"><b>20+</b><span>Años en minería</span></div>
+  <div class="wrap">
+    <div class="tag rv">Repuestos para minería · Chile</div>
+    <h1 class="rv">Generando valor<br>para nuestros <span>clientes</span></h1>
+    <p class="rv">Entregamos soluciones sustentables para el negocio: repuestos de alta calidad, revestimientos y una cadena de suministro eficiente.</p>
+    <div class="cta rv"><a href="#contacto" class="btn">Solicitar cotización →</a><a href="#lineas" class="btn ghost">Ver líneas</a></div>
+    <div class="hero-lines rv">
+      <a href="#ceramico"><b>01</b><span>Revestimiento cerámico</span></a>
+      <a href="#gets"><b>02</b><span>GETs maquinaria pesada</span></a>
+      <a href="#chancado"><b>03</b><span>Chancado</span><em>Nuevo</em></a>
+    </div>
+  </div>
+</section>
+
+<div class="ticker" aria-hidden="true"><div id="tk"></div></div>
+
+<section id="nosotros">
+  <div class="wrap about">
+    <div class="big rv">20<span style="-webkit-text-stroke:2px var(--or);color:transparent">+</span><small>Años de experiencia<br>en minería y servicios</small></div>
+    <div>
+      <div class="tag rv">Sobre nosotros</div>
+      <h2 class="rv">Una empresa chilena<br>para la industria pesada</h2>
+      <p class="rv">NovaChain ofrece soluciones innovadoras para la minería, la construcción y otras áreas que requieren maquinaria pesada. Nos enfocamos en repuestos de alta calidad, revestimientos cerámicos duraderos y una cadena de suministro eficiente.</p>
+      <div class="mvv rv">
+        <div><h3>Misión</h3><p>Soluciones confiables y de calidad para maximizar la productividad, con soporte técnico y relaciones de largo plazo.</p></div>
+        <div><h3>Visión</h3><p>Ser líderes del mercado por innovación, excelencia en servicio y soluciones que superen expectativas.</p></div>
+        <div><h3>Valores</h3><p>Calidad, confianza y atención personalizada, con soluciones eficientes centradas en el cliente.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="lineas">
+  <div class="wrap">
+    <div class="sh">
+      <div><div class="tag rv">Líneas de negocio</div><h2 class="rv">Tres líneas.<br><span>Cero detenciones.</span></h2></div>
+      <p class="rv">Un portafolio alineado con las necesidades operacionales de nuestros clientes, con productos propios y de marca original.</p>
+    </div>
+
+    <article class="line rv" id="ceramico">
+      <div class="n">01</div>
+      <div>
+        <h3>Revestimiento cerámico</h3>
+        <p>Revestimientos cerámicos duraderos para proteger chutes, tolvas, ciclones y cañerías frente a la abrasión y el impacto, extendiendo la vida útil de los equipos.</p>
+        <ul><li>Placas cerámicas de alúmina</li><li>Revestimiento cerámico-caucho</li><li>Compuestos de reparación</li></ul>
+      </div>
+      <div class="art"><span class="cap">FIG. 01 — CHUTE REVESTIDO</span><img src="img/linea-ceramico.jpg" alt=""><div data-ill="ceramico"></div></div>
+    </article>
+
+    <article class="line rv" id="gets">
+      <div class="n">02</div>
+      <div>
+        <h3>GETs para maquinaria pesada</h3>
+        <p>Elementos de desgaste para palas, cargadores, excavadoras y bulldozers, que protegen los baldes y mantienen la productividad del carguío.</p>
+        <ul><li>Dientes y adaptadores</li><li>Cuchillas y cantoneras</li><li>Pasadores y seguros</li></ul>
+      </div>
+      <div class="art"><span class="cap">FIG. 02 — SISTEMA DIENTE / ADAPTADOR</span><img src="img/linea-gets-mini.jpg" alt=""><div data-ill="gets"></div></div>
+    </article>
+
+    <article class="line new rv" id="chancado">
+      <div class="n">03</div>
+      <div>
+        <h3>Chancado<em>Nueva línea</em></h3>
+        <p>Repuestos y piezas de desgaste para chancadores en etapas de chancado primario, secundario y terciario, para mantener la reducción de material sin detenciones.</p>
+        <ul><li>Mantos y cóncavos</li><li>Placas de mandíbula</li><li>Revestimientos y componentes de chancador</li></ul>
+      </div>
+      <div class="art"><span class="cap">FIG. 03 — CHANCADOR CÓNICO</span><div data-ill="chancado"></div></div>
+    </article>
+  </div>
+</section>
+
+<section id="por-que">
+  <div class="wrap">
+    <div class="sh">
+      <div><div class="tag rv">Por qué NovaChain</div><h2 class="rv">Confianza que<br><span>se mide en faena</span></h2></div>
+    </div>
+    <div class="why">
+      <div class="rv"><b>01</b><h3>Lead time</h3><p>Partners logísticos confiables nos garantizan entregas rápidas y continuidad operativa.</p></div>
+      <div class="rv"><b>02</b><h3>Precios competitivos</h3><p>La mejor relación precio-calidad con productos propios y de marca original.</p></div>
+      <div class="rv"><b>03</b><h3>Calidad garantizada</h3><p>Productos de calidad para asegurar la sustentabilidad de tus activos.</p></div>
+      <div class="rv"><b>04</b><h3>Portafolio de productos</h3><p>Repuestos especializados para minería, con soluciones para cada operación.</p></div>
+      <div class="rv"><b>05</b><h3>Equipo técnico</h3><p>Una amplia gama de productos en nuestras 3 líneas de negocio, con soporte experto.</p></div>
+      <div class="rv"><b>06</b><h3>Servicio confiable</h3><p>Servicio de calidad y tiempos eficientes para apoyar las metas de nuestros clientes.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <img src="img/rajo-abierto.jpg" alt="Mina a rajo abierto" loading="lazy">
+  <div class="wrap">
+    <div class="tag rv">Equipo NovaChain</div>
+    <h2 class="rv" style="margin-top:18px">Un socio estratégico, <span>no solo un proveedor</span></h2>
+    <p class="rv">Nuestro equipo de profesionales ejecutivos y técnicos cuenta con más de 20 años de experiencia en la industria minera y de servicios, entregando soluciones integrales a cada requerimiento.</p>
+  </div>
+</section>
+<div class="hazard"></div>
+
+<section class="clients" id="clientes">
+  <div class="wrap">
+    <div class="tag">Nuestros clientes</div>
+    <div class="logos">
+      <img src="img/cliente-herco.png" alt="Herco Equipment" loading="lazy">
+      <img src="img/cliente-yichuan.png" alt="Yichuan International" loading="lazy">
+      <img src="img/cliente-rkt.webp" alt="RKT" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<section id="contacto">
+  <div class="wrap contact">
+    <div>
+      <div class="tag rv">Contacto</div>
+      <h2 class="rv">Hablemos de<br>tu <span>operación</span></h2>
+      <dl class="info rv">
+        <div><dt>Oficina</dt><dd>Tajamar 481, Torre Norte, Of. 303<br>Las Condes, Santiago</dd></div>
+        <div><dt>Correo</dt><dd><a href="mailto:contacto@novachain.com">contacto@novachain.com</a></dd></div>
+        <div><dt>Teléfono</dt><dd><a href="tel:+56987290154">+56 9 8729 0154</a></dd></div>
+        <div><dt>Horario</dt><dd>Lunes a viernes, 09:00 – 18:00</dd></div>
+      </dl>
+    </div>
+    <form class="f rv" data-contact>
+      <h3>Solicitar cotización</h3>
+      <label>Nombre<input name="nombre" required></label>
+      <label>Empresa<input name="empresa"></label>
+      <label>Correo<input name="correo" type="email" required></label>
+      <label>Línea de interés<select name="linea"><option>Revestimiento cerámico</option><option>GETs para maquinaria pesada</option><option>Chancado</option><option>Otro</option></select></label>
+      <label class="full">Mensaje<textarea name="mensaje" placeholder="Equipo, número de parte, cantidad…"></textarea></label>
+      <button class="btn" type="submit">Enviar solicitud →</button>
+    </form>
+  </div>
+</section>
+
+<div class="hazard"></div>
+<footer>
+  <div class="wrap">
+    <img src="img/logo-blanco.png" alt="NovaChain">
+    <span>Soporte técnico y logístico a nivel nacional · © 2026 NovaChain</span>
+  </div>
+</footer>
+
+<script>
+const words = ["Repuestos para minería","Revestimiento cerámico","GETs","Chancado","Lead time","Soporte técnico","Calidad garantizada"];
+document.getElementById("tk").innerHTML = [...words,...words].map(w=>`<span>${w}</span>`).join("");
+const nav = document.getElementById("nav");
+addEventListener("scroll",()=>nav.classList.toggle("solid",scrollY>40),{passive:true});
+</script>
+<script src="shared.js"></script>
+</body>
+</html>

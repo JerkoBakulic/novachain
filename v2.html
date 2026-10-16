@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NovaChain — Soluciones para minería</title>
+<meta name="description" content="NovaChain: revestimiento cerámico, GETs para maquinaria pesada y chancado. Repuestos de calidad y cadena de suministro eficiente para la minería en Chile.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#ffffff; --soft:#f2f6f7; --soft2:#e6eef0;
+  --ink:#0e2730; --text:#334a52; --mute:#6b7f86; --line:#dce6e9;
+  --teal:#0B7A92; --teal2:#075a6c; --tealbg:#e3f1f4; --or:#FA6312; --orbg:#fff0e7;
+  --gut:clamp(18px,4.5vw,64px);
+  --r:20px;
+  --ease:cubic-bezier(.2,.7,.1,1);
+  --hex:polygon(25% 3%,75% 3%,100% 50%,75% 97%,25% 97%,0 50%);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:120px}
+body{background:var(--bg);color:var(--text);font:400 17px/1.7 Manrope,system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden;padding-top:40px}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+button,input,select,textarea{font:inherit;color:inherit}
+h1,h2,h3{color:var(--ink);font-weight:800;letter-spacing:-.03em;line-height:1.08;text-wrap:balance}
+.wrap{max-width:1240px;margin:0 auto;padding:0 var(--gut)}
+.pill{display:inline-flex;align-items:center;gap:8px;padding:7px 14px;border-radius:99px;background:var(--tealbg);color:var(--teal);font:700 13px/1 Manrope;letter-spacing:.02em}
+.pill i{width:7px;height:7px;border-radius:50%;background:var(--or)}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:16px 26px;border-radius:12px;font:700 15px/1 Manrope;background:var(--teal);color:#fff;border:0;cursor:pointer;transition:background .25s,transform .25s,box-shadow .25s;box-shadow:0 10px 24px -12px rgba(11,122,146,.7)}
+.btn:hover{background:var(--teal2);transform:translateY(-2px)}
+.btn.or{background:var(--or);box-shadow:0 10px 24px -12px rgba(250,99,18,.7)}
+.btn.or:hover{background:#e0530a}
+.btn.line{background:#fff;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--line)}
+.btn.line:hover{box-shadow:inset 0 0 0 1.5px var(--teal);color:var(--teal)}
+
+/* nav */
+.nav{position:fixed;top:40px;left:0;right:0;z-index:60;padding:14px 0;transition:padding .3s}
+.nav .bar{display:flex;align-items:center;justify-content:space-between;height:68px;padding:0 14px 0 22px;border-radius:18px;background:rgba(255,255,255,.86);backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--line),0 12px 30px -20px rgba(14,39,48,.25)}
+.nav .logo img{height:32px;width:auto}
+.nav ul{display:flex;gap:6px;list-style:none;font-weight:600;font-size:15px}
+.nav ul a{padding:10px 14px;border-radius:10px;color:var(--text);transition:background .2s,color .2s}
+.nav ul a:hover{background:var(--soft);color:var(--ink)}
+.nav .btn{padding:13px 20px;font-size:14px}
+.nc-burger{display:none;width:46px;height:46px;border-radius:12px;background:var(--soft);border:0;cursor:pointer;position:relative}
+.nc-burger i,.nc-burger i::before,.nc-burger i::after{position:absolute;left:13px;width:20px;height:2px;border-radius:2px;background:var(--ink);content:"";transition:.3s}
+.nc-burger i{top:22px}.nc-burger i::before{left:0;top:-6px}.nc-burger i::after{left:0;top:6px}
+.nc-menu{position:fixed;inset:40px 0 0;z-index:55;background:#fff;display:flex;flex-direction:column;justify-content:center;padding:110px var(--gut) 40px;gap:6px;opacity:0;pointer-events:none;transition:opacity .3s}
+.nc-menu a{font:800 36px/1.3 Manrope;color:var(--ink);letter-spacing:-.03em}
+body.nc-open .nc-menu{opacity:1;pointer-events:auto}
+body.nc-open .nc-burger i{background:transparent}
+body.nc-open .nc-burger i::before{top:0;transform:rotate(45deg)}
+body.nc-open .nc-burger i::after{top:0;transform:rotate(-45deg)}
+@media(max-width:960px){.nav ul,.nav .btn{display:none}.nc-burger{display:block}}
+
+/* hero */
+.hero{padding:150px 0 90px;background:radial-gradient(1100px 520px at 85% 10%,var(--tealbg),transparent 60%),radial-gradient(700px 400px at 0% 90%,var(--orbg),transparent 60%)}
+.hero .g{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(30px,5vw,80px);align-items:center}
+.hero h1{font-size:clamp(44px,5.6vw,80px);margin:22px 0 22px}
+.hero h1 span{color:var(--teal)}
+.hero p{font-size:clamp(18px,1.4vw,20px);max-width:520px;color:var(--text)}
+.hero .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:34px}
+.trust{display:flex;gap:30px;margin-top:44px;padding-top:28px;border-top:1px solid var(--line);flex-wrap:wrap}
+.trust div b{display:block;font:800 30px/1 Manrope;color:var(--ink);letter-spacing:-.03em}
+.trust div span{font-size:14px;color:var(--mute)}
+.hx{position:relative;aspect-ratio:1/0.92}
+.hx .ph{position:absolute;inset:0;clip-path:var(--hex);overflow:hidden;background:var(--soft2)}
+.hx .ph img{width:100%;height:100%;object-fit:cover}
+.hx .ring{position:absolute;inset:-4%;clip-path:var(--hex);background:linear-gradient(135deg,var(--or),var(--teal));z-index:-1;opacity:.9}
+.float{position:absolute;background:#fff;border-radius:16px;padding:16px 18px;box-shadow:0 20px 40px -18px rgba(14,39,48,.35);display:flex;gap:12px;align-items:center;font-size:14px;color:var(--mute);animation:bob 5s ease-in-out infinite}
+.float b{display:block;color:var(--ink);font-size:16px}
+.float .ic{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:var(--tealbg);color:var(--teal)}
+.float .ic.o{background:var(--orbg);color:var(--or)}
+.float svg{width:22px;height:22px}
+.f1{left:-6%;bottom:12%}
+.f2{right:-4%;top:10%;animation-delay:-2.5s}
+@keyframes bob{50%{transform:translateY(-8px)}}
+
+/* logos */
+.logos{padding:34px 0;border-block:1px solid var(--line)}
+.logos .wrap{display:flex;align-items:center;justify-content:space-between;gap:30px;flex-wrap:wrap}
+.logos span{font-weight:700;font-size:14px;color:var(--mute)}
+.logos .l{display:flex;gap:56px;align-items:center;flex-wrap:wrap}
+.logos img{height:36px;width:auto;filter:brightness(0) saturate(0);opacity:.45;transition:opacity .3s}
+.logos img:hover{opacity:.8}
+
+section{padding:clamp(80px,10vw,130px) 0}
+.sh{text-align:center;max-width:720px;margin:0 auto clamp(44px,5vw,64px)}
+.sh h2{font-size:clamp(36px,4.2vw,58px);margin:18px 0 16px}
+.sh h2 span{color:var(--teal)}
+.sh p{color:var(--mute)}
+
+/* líneas */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.card{background:#fff;border:1.5px solid var(--line);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;transition:transform .35s var(--ease),box-shadow .35s,border-color .35s}
+.card:hover{transform:translateY(-6px);box-shadow:0 30px 50px -30px rgba(14,39,48,.35);border-color:transparent}
+.card .art{background:var(--soft);aspect-ratio:4/3;display:grid;place-items:center;padding:22px;color:var(--ink);--ill-accent:var(--teal);position:relative}
+.card .art svg{width:100%;height:auto}
+.card .art .badge{position:absolute;top:16px;left:16px;padding:6px 12px;border-radius:99px;background:var(--or);color:#fff;font:700 12px Manrope}
+.card .b{padding:26px 26px 30px;display:flex;flex-direction:column;flex:1}
+.card .n{font:800 13px Manrope;color:var(--or);letter-spacing:.08em}
+.card h3{font-size:26px;margin:8px 0 12px}
+.card p{font-size:15.5px;color:var(--mute);flex:1}
+.card ul{list-style:none;margin:18px 0 22px;display:grid;gap:8px;font-size:15px;color:var(--ink);font-weight:600}
+.card li{display:flex;gap:10px;align-items:center}
+.card li::before{content:"";width:18px;height:18px;flex:none;border-radius:6px;background:var(--tealbg) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230B7A92' stroke-width='3'%3E%3Cpath d='M6 12l4 4 8-8'/%3E%3C/svg%3E") center/12px no-repeat}
+.card a.more{font-weight:700;color:var(--teal);display:inline-flex;gap:8px;align-items:center}
+.card a.more:hover{gap:14px}
+.card.new{border-color:var(--or)}
+
+/* por qué */
+#por-que{background:var(--soft)}
+.why{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.why div{background:#fff;border-radius:var(--r);padding:30px;border:1.5px solid transparent;transition:border-color .3s}
+.why div:hover{border-color:var(--teal)}
+.why .ic{width:54px;height:54px;clip-path:var(--hex);background:var(--teal);color:#fff;display:grid;place-items:center;margin-bottom:20px}
+.why div:nth-child(even) .ic{background:var(--or)}
+.why svg{width:24px;height:24px}
+.why h3{font-size:21px;margin-bottom:8px}
+.why p{font-size:15.5px;color:var(--mute)}
+
+/* nosotros */
+.about{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,90px);align-items:center}
+.about .pic{position:relative;border-radius:28px;overflow:hidden;aspect-ratio:5/4}
+.about .pic img{width:100%;height:100%;object-fit:cover}
+.about .pic .yr{position:absolute;left:22px;bottom:22px;background:#fff;border-radius:18px;padding:18px 22px;box-shadow:0 20px 40px -20px rgba(0,0,0,.4)}
+.about .pic .yr b{display:block;font:800 44px/1 Manrope;color:var(--teal);letter-spacing:-.04em}
+.about .pic .yr span{font-size:14px;color:var(--mute)}
+.about h2{font-size:clamp(34px,3.8vw,52px);margin:18px 0 18px}
+.about h2 span{color:var(--teal)}
+.tabs{display:flex;gap:6px;background:var(--soft);padding:5px;border-radius:14px;margin:30px 0 18px;width:max-content;max-width:100%}
+.tabs button{border:0;background:none;padding:10px 18px;border-radius:10px;font-weight:700;font-size:15px;color:var(--mute);cursor:pointer;transition:.25s}
+.tabs button.on{background:#fff;color:var(--ink);box-shadow:0 4px 12px -6px rgba(0,0,0,.25)}
+.tabp{min-height:84px;color:var(--text)}
+
+/* CTA */
+.cta-band{margin:0 var(--gut);border-radius:32px;background:linear-gradient(120deg,var(--teal2),var(--teal));color:#fff;padding:clamp(50px,7vw,90px) clamp(26px,6vw,90px);display:grid;grid-template-columns:1.3fr auto;gap:30px;align-items:center;position:relative;overflow:hidden}
+.cta-band::after{content:"";position:absolute;right:-60px;top:-60px;width:320px;height:290px;clip-path:var(--hex);background:rgba(255,255,255,.08)}
+.cta-band h2{color:#fff;font-size:clamp(32px,3.6vw,50px)}
+.cta-band p{color:rgba(255,255,255,.8);margin-top:12px;max-width:560px}
+.cta-band .btn{position:relative;z-index:2}
+
+/* contacto */
+.contact{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(30px,5vw,70px);align-items:start}
+.contact h2{font-size:clamp(36px,4vw,56px);margin:18px 0 26px}
+.ci{display:grid;gap:14px}
+.ci a,.ci div{display:flex;gap:16px;align-items:center;padding:18px;border-radius:16px;background:var(--soft);transition:background .25s}
+.ci a:hover{background:var(--tealbg)}
+.ci .ic{width:46px;height:46px;flex:none;border-radius:12px;background:#fff;color:var(--teal);display:grid;place-items:center}
+.ci svg{width:22px;height:22px}
+.ci small{display:block;font-size:13px;color:var(--mute)}
+.ci b{color:var(--ink);font-weight:700}
+form.f{background:#fff;border:1.5px solid var(--line);border-radius:24px;padding:clamp(24px,4vw,40px);display:grid;grid-template-columns:1fr 1fr;gap:18px;box-shadow:0 30px 60px -40px rgba(14,39,48,.35)}
+form.f h3{grid-column:span 2;font-size:26px}
+form.f label{display:grid;gap:8px;font-weight:700;font-size:14px;color:var(--ink)}
+form.f .full{grid-column:span 2}
+form.f input,form.f select,form.f textarea{border:1.5px solid var(--line);border-radius:12px;padding:14px 16px;font:500 16px Manrope;color:var(--ink);background:#fff;outline:none;transition:border-color .2s,box-shadow .2s}
+form.f input:focus,form.f select:focus,form.f textarea:focus{border-color:var(--teal);box-shadow:0 0 0 4px var(--tealbg)}
+form.f textarea{min-height:120px;resize:vertical}
+form.f .btn{grid-column:span 2;justify-content:center}
+
+footer{background:var(--ink);color:rgba(255,255,255,.65);padding:60px 0 34px;margin-top:clamp(80px,10vw,130px);font-size:15px}
+footer .g{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.1)}
+footer img{height:30px;margin-bottom:18px}
+footer h4{color:#fff;font-size:15px;margin-bottom:14px}
+footer ul{list-style:none;display:grid;gap:8px}
+footer a:hover{color:#fff}
+footer .c{padding-top:26px;font-size:13px}
+
+.rv{opacity:0;transform:translateY(24px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.rv.in{opacity:1;transform:none}
+
+@media(max-width:960px){
+  .hero .g,.about,.contact{grid-template-columns:1fr}
+  .hx{max-width:520px;margin:20px auto 0;width:100%}
+  .cards,.why{grid-template-columns:1fr 1fr}
+  .cards .card:last-child{grid-column:span 2}
+  .cta-band{grid-template-columns:1fr}
+  footer .g{grid-template-columns:1fr 1fr}
+}
+@media(max-width:640px){
+  body{font-size:16px}
+  .nav{padding:10px 0}
+  .nav .bar{height:60px;padding:0 8px 0 16px}
+  .nav .logo img{height:26px}
+  .hero{padding:120px 0 60px}
+  .hero .cta{flex-direction:column}
+  .hero .cta .btn{justify-content:center}
+  .trust{gap:20px}
+  .f1{left:0;bottom:4%}.f2{right:0;top:2%}
+  .float{padding:12px 14px;font-size:12px}
+  .float .ic{width:34px;height:34px}
+  .logos .l{gap:30px}.logos img{height:28px}
+  .cards,.why{grid-template-columns:1fr}
+  .cards .card:last-child{grid-column:auto}
+  .tabs{width:100%}.tabs button{flex:1;padding:10px 8px}
+  form.f{grid-template-columns:1fr}
+  form.f h3,form.f .full,form.f .btn{grid-column:auto}
+  footer .g{grid-template-columns:1fr}
+  .cta-band{margin:0 12px;border-radius:24px}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <div class="bar">
+      <a href="#" class="logo"><img src="img/logo-color.png" alt="NovaChain"></a>
+      <ul>
+        <li><a href="#lineas">Líneas de negocio</a></li>
+        <li><a href="#por-que">Por qué NovaChain</a></li>
+        <li><a href="#nosotros">Nosotros</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+      <a href="#contacto" class="btn or">Cotizar ahora</a>
+      <button class="nc-burger" aria-label="Menú"><i></i></button>
+    </div>
+  </div>
+</header>
+<nav class="nc-menu">
+  <a href="#lineas">Líneas de negocio</a><a href="#por-que">Por qué NovaChain</a><a href="#nosotros">Nosotros</a><a href="#contacto">Contacto</a>
+</nav>
+
+<section class="hero">
+  <div class="wrap g">
+    <div>
+      <span class="pill rv"><i></i>Líderes en repuestos para minería</span>
+      <h1 class="rv">Generando valor para <span>nuestros clientes</span>.</h1>
+      <p class="rv">Soluciones sustentables para la minería y la construcción: repuestos de alta calidad, revestimientos cerámicos duraderos y una cadena de suministro eficiente.</p>
+      <div class="cta rv"><a href="#contacto" class="btn">Solicitar cotización</a><a href="#lineas" class="btn line">Conocer líneas →</a></div>
+      <div class="trust rv">
+        <div><b>+20 años</b><span>de experiencia</span></div>
+        <div><b>3 líneas</b><span>de negocio</span></div>
+        <div><b>Nacional</b><span>soporte y logística</span></div>
+      </div>
+    </div>
+    <div class="hx rv">
+      <div class="ring"></div>
+      <div class="ph"><img src="img/rajo-abierto.jpg" alt="Mina a rajo abierto"></div>
+      <div class="float f1"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg></span><span><b>Lead time</b>Entregas rápidas</span></div>
+      <div class="float f2"><span class="ic o"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg></span><span><b>Calidad garantizada</b>Marca original y propia</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="logos" id="clientes">
+  <div class="wrap">
+    <span>Confían en nosotros</span>
+    <div class="l">
+      <img src="img/cliente-herco.png" alt="Herco Equipment" loading="lazy">
+      <img src="img/cliente-yichuan.png" alt="Yichuan International" loading="lazy">
+      <img src="img/cliente-rkt.webp" alt="RKT" loading="lazy">
+    </div>
+  </div>
+</div>
+
+<section id="lineas">
+  <div class="wrap">
+    <div class="sh">
+      <span class="pill rv"><i></i>Líneas de negocio</span>
+      <h2 class="rv">Un portafolio pensado para <span>tu operación</span></h2>
+      <p class="rv">Productos y servicios alineados con las necesidades operacionales de nuestros clientes.</p>
+    </div>
+    <div class="cards">
+      <article class="card rv">
+        <div class="art"><div data-ill="ceramico"></div></div>
+        <div class="b">
+          <span class="n">LÍNEA 01</span>
+          <h3>Revestimiento cerámico</h3>
+          <p>Protección de chutes, tolvas, ciclones y cañerías frente a la abrasión y el impacto, extendiendo la vida útil de los equipos.</p>
+          <ul><li>Placas cerámicas de alúmina</li><li>Revestimiento cerámico-caucho</li><li>Compuestos de reparación</li></ul>
+          <a href="#contacto" class="more">Cotizar esta línea →</a>
+        </div>
+      </article>
+      <article class="card rv">
+        <div class="art"><div data-ill="gets"></div></div>
+        <div class="b">
+          <span class="n">LÍNEA 02</span>
+          <h3>GETs para maquinaria pesada</h3>
+          <p>Elementos de desgaste para palas, cargadores, excavadoras y bulldozers que protegen los baldes y la productividad del carguío.</p>
+          <ul><li>Dientes y adaptadores</li><li>Cuchillas y cantoneras</li><li>Pasadores y seguros</li></ul>
+          <a href="#contacto" class="more">Cotizar esta línea →</a>
+        </div>
+      </article>
+      <article class="card new rv">
+        <div class="art"><span class="badge">Nueva línea</span><div data-ill="chancado"></div></div>
+        <div class="b">
+          <span class="n">LÍNEA 03</span>
+          <h3>Chancado</h3>
+          <p>Repuestos y piezas de desgaste para chancado primario, secundario y terciario, para mantener la reducción de material sin detenciones.</p>
+          <ul><li>Mantos y cóncavos</li><li>Placas de mandíbula</li><li>Componentes de chancador</li></ul>
+          <a href="#contacto" class="more">Cotizar esta línea →</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="por-que">
+  <div class="wrap">
+    <div class="sh">
+      <span class="pill rv"><i></i>¿Por qué confiar en NovaChain?</span>
+      <h2 class="rv">Continuidad operativa, <span>sin sorpresas</span></h2>
+    </div>
+    <div class="why">
+      <div class="rv"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><h3>Lead time</h3><p>Partners logísticos confiables nos garantizan entregas rápidas y continuidad operativa.</p></div>
+      <div class="rv"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 12l-8 8-9-9V3h8z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg></span><h3>Precios competitivos</h3><p>La mejor relación precio-calidad con productos propios y de marca original.</p></div>
+      <div class="rv"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg></span><h3>Calidad garantizada</h3><p>Productos de calidad para asegurar la sustentabilidad de tus activos.</p></div>
+      <div class="rv"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 8l-9-5-9 5 9 5zM3 8v8l9 5 9-5V8M12 13v8"/></svg></span><h3>Portafolio de productos</h3><p>Repuestos especializados para minería, con soluciones para cada operación.</p></div>
+      <div class="rv"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6M16 4.5a3.5 3.5 0 010 7M18 14c2 .6 3.5 2.6 3.5 6"/></svg></span><h3>Equipo técnico</h3><p>Una amplia gama de productos en 3 líneas de negocio, con soporte experto.</p></div>
+      <div class="rv"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12a8 8 0 0114-5.3M20 12a8 8 0 01-14 5.3"/><path d="M18 3v4h-4M6 21v-4h4"/></svg></span><h3>Servicio confiable</h3><p>Calidad y tiempos eficientes para apoyar las metas de nuestros clientes.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="nosotros">
+  <div class="wrap about">
+    <div class="pic rv"><img src="img/camion-noche.jpg" alt="Camión minero en operación" loading="lazy"><div class="yr"><b>+20</b><span>años en minería y servicios</span></div></div>
+    <div>
+      <span class="pill rv"><i></i>Sobre nosotros</span>
+      <h2 class="rv">Un socio estratégico para <span>la industria pesada</span></h2>
+      <p class="rv">Somos una empresa chilena que optimiza la gestión y el valor de activos mediante innovación y desarrollo sustentable. Nuestro equipo ejecutivo y técnico acompaña a cada cliente en los ámbitos técnicos y del negocio.</p>
+      <div class="tabs rv" role="tablist">
+        <button class="on" data-t="0">Misión</button><button data-t="1">Visión</button><button data-t="2">Valores</button>
+      </div>
+      <p class="tabp rv" id="tabp"></p>
+    </div>
+  </div>
+</section>
+
+<div class="cta-band rv">
+  <div><h2>¿Necesitas un repuesto para tu operación?</h2><p>Cuéntanos el equipo y el número de parte. Te respondemos con una propuesta a la medida.</p></div>
+  <a href="#contacto" class="btn or">Solicitar cotización</a>
+</div>
+
+<section id="contacto">
+  <div class="wrap contact">
+    <div>
+      <span class="pill rv"><i></i>Contacto</span>
+      <h2 class="rv">Estaremos encantados de ayudarte</h2>
+      <div class="ci rv">
+        <a href="mailto:contacto@novachain.com"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span><span><small>Correo</small><b>contacto@novachain.com</b></span></a>
+        <a href="tel:+56987290154"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 006 6L16 13l5 2v4a2 2 0 01-2 2A16 16 0 013 5a2 2 0 012-2z"/></svg></span><span><small>Teléfono</small><b>+56 9 8729 0154</b></span></a>
+        <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-6.2-7-11a7 7 0 0114 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span><span><small>Oficina</small><b>Tajamar 481, Torre Norte, Of. 303, Las Condes</b></span></div>
+        <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><span><small>Horario</small><b>Lunes a viernes, 09:00 – 18:00</b></span></div>
+      </div>
+    </div>
+    <form class="f rv" data-contact>
+      <h3>Solicita tu cotización</h3>
+      <label>Nombre<input name="nombre" required></label>
+      <label>Empresa<input name="empresa"></label>
+      <label>Correo<input name="correo" type="email" required></label>
+      <label>Línea de interés<select name="linea"><option>Revestimiento cerámico</option><option>GETs para maquinaria pesada</option><option>Chancado</option><option>Otro</option></select></label>
+      <label class="full">Mensaje<textarea name="mensaje" placeholder="Equipo, número de parte, cantidad…"></textarea></label>
+      <button class="btn" type="submit">Enviar solicitud</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="g">
+      <div><img src="img/logo-blanco.png" alt="NovaChain"><p>Soluciones confiables para la industria minera, con soporte técnico y logístico a nivel nacional.</p></div>
+      <div><h4>Líneas</h4><ul><li><a href="#lineas">Revestimiento cerámico</a></li><li><a href="#lineas">GETs</a></li><li><a href="#lineas">Chancado</a></li></ul></div>
+      <div><h4>Contacto</h4><ul><li><a href="mailto:contacto@novachain.com">contacto@novachain.com</a></li><li><a href="tel:+56987290154">+56 9 8729 0154</a></li><li>Las Condes, Santiago</li></ul></div>
+    </div>
+    <div class="c">© 2026 NovaChain. Todos los derechos reservados.</div>
+  </div>
+</footer>
+
+<script>
+const T = [
+  "Ofrecer soluciones confiables y de calidad para maximizar la productividad, con soporte técnico, innovación y relaciones de confianza a largo plazo.",
+  "Ser líderes del mercado, destacando por innovación, excelencia en servicio y soluciones que superen expectativas, impulsando el éxito de nuestros clientes.",
+  "Entregar productos de alta calidad, asegurando satisfacción y confianza, con atención personalizada y soluciones eficientes centradas en el cliente."
+];
+const tabs = document.querySelectorAll(".tabs button"), tp = document.getElementById("tabp");
+tabs.forEach(b => b.onclick = () => { tabs.forEach(x => x.classList.toggle("on", x === b)); tp.textContent = T[+b.dataset.t]; });
+tp.textContent = T[0];
+</script>
+<script src="shared.js"></script>
+</body>
+</html>
